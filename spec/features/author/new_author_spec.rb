@@ -15,4 +15,15 @@ describe "New author page", type: :feature do
     expect(page).to have_field('author[homepage]')
   end
 
+  it "should add a new author to the database" do
+    visit new_author_path
+
+    page.fill_in 'author[last_name]', with: 'Dijkstra'
+    page.fill_in 'author[first_name]', with: 'Edsger'
+    page.fill_in 'author[homepage]', with: 'cantpronounce.com'
+    find('input[type="submit"]').click
+
+    expect(Author.where(first_name: 'Edsger', last_name: 'Dijkstra', homepage: 'cantpronounce.com')).to exist
+  end
+
 end
