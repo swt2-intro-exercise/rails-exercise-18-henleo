@@ -4,6 +4,7 @@ class Paper < ApplicationRecord
   validates :venue, presence: true
   validates :year, presence: true
   validate :year_type
+  scope :created_in, ->(time) {where("year = ?", time)}
 
   def author_ids
     authors.collect {| author | author.id }
