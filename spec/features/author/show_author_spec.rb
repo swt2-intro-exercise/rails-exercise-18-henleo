@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe "show author page" do
-  @alan = FactoryBot.create :author
+
+  before :context do
+    @alan = FactoryBot.create :author
+  end
 
   it "should render without error" do
     visit author_path(@alan)
