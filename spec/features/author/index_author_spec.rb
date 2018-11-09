@@ -33,4 +33,10 @@ describe "index authors page" do
     expect(page).to have_link 'Edit', href: edit_author_path(@alan)
     expect(page).to have_link 'Edit', href: edit_author_path(@tim)
   end
+
+  it "should contain a link to delete each author" do
+    visit authors_path
+    expect(page).to have_link 'Delete', href: author_path(@alan), method: :delete
+    expect(page).to have_link 'Delete', href: author_path(@tim), method: :delete
+  end
 end
