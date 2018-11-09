@@ -36,7 +36,9 @@ describe "index authors page" do
 
   it "should contain a link to delete each author" do
     visit authors_path
-    expect(page).to have_link 'Delete', href: author_path(@alan)
-    expect(page).to have_link 'Delete', href: author_path(@tim)
+    url = author_path(@alan)
+    expect(page).to have_css("a[data-method='delete'][href='#{url}']")
+    url = author_path(@tim)
+    expect(page).to have_css("a[data-method='delete'][href='#{url}']")
   end
 end
