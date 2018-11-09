@@ -6,7 +6,12 @@ class AuthorsController < ApplicationController
     #render plain: params[:author].inspect
 
     @author = Author.new(author_params)
-    @author.save
+
+    if @author.save
+      redirect_to @author
+    else
+      render 'new'
+    end
   end
 
   def show
