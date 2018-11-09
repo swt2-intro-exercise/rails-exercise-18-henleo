@@ -27,4 +27,10 @@ describe "index authors page" do
     visit authors_path
     expect(page).to have_link 'New', href: new_author_path
   end
+
+  it "should contain a link to edit each author" do
+    visit authors_path
+    expect(page).to have_link 'Edit', href: edit_author_path(@alan)
+    expect(page).to have_link 'Edit', href: edit_author_path(@tim)
+  end
 end
