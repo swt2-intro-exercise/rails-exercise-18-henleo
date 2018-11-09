@@ -5,4 +5,8 @@ class Author < ApplicationRecord
   def name
     return self.first_name + ' ' + self. last_name
   end
+
+  def paper_ids
+    papers.collect {| paper | paper.id }
+  end
 end

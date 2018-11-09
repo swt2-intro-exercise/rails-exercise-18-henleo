@@ -5,6 +5,10 @@ class Paper < ApplicationRecord
   validates :year, presence: true
   validate :year_type
 
+  def author_ids
+    authors.collect {| author | author.id }
+  end
+
   private
   def year_type
     errors.add(:year, 'type must be integer') unless
