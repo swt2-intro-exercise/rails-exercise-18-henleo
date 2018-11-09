@@ -26,4 +26,13 @@ describe "New author page", type: :feature do
     expect(Author.where(first_name: 'Edsger', last_name: 'Dijkstra', homepage: 'cantpronounce.com')).to exist
   end
 
+  it "should show an error message if last name field is empty on submit" do
+    visit new_author_path
+
+    page.fill_in 'author[first_name]', with: 'Edsger'
+    page.fill_in 'author[homepage]', with: 'cantpronounce.com'
+    find('input[type="submit"]').click
+
+    expect(page).to have_text('error')
+  end
 end
