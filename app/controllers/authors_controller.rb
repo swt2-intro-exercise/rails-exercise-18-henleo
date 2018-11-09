@@ -3,6 +3,10 @@ class AuthorsController < ApplicationController
     @author = Author.new
   end
 
+  def edit
+    @author = Author.find(params[:id])
+  end
+
   def create
     #render plain: params[:author].inspect
 
