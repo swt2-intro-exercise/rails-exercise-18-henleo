@@ -18,12 +18,12 @@ describe "edit author page" do
   it "should update the record" do
     visit edit_author_path(@alan)
 
-    expect(@alan.first_name).not_to equal('Edsger')
+    expect(@alan.first_name).not_to eq('Edsger')
 
     page.fill_in 'author[first_name]', with: 'Edsger'
     find('input[type="submit"]').click
 
     @alan.reload
-    expect(@alan.first_name).to equal('Edsger')
+    expect(@alan.first_name).to eq('Edsger')
   end
 end
