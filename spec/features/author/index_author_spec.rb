@@ -13,14 +13,14 @@ describe "index authors page" do
 
   it "should contain the names of all users" do
     visit authors_path
-    expect(page).to have_text('Alan Turing')
-    expect(page).to have_text('Tim Turing')
+    expect(page).to have_text('Alan')
+    expect(page).to have_text('Tim')
   end
 
   it "should contain links to the users detail pages" do
     visit authors_path
-    expect(page).to have_link 'Alan Turing', href: author_path(@alan)
-    expect(page).to have_link 'Tim Turing', href: author_path(@tim)
+    expect(page).to have_link 'Show', href: author_path(@alan)
+    expect(page).to have_link 'Show', href: author_path(@tim)
   end
 
   it "should contain a link to add a new author" do
